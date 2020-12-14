@@ -2,25 +2,21 @@
 
 const TOTAL_SEC = 10 * 60; // Initial value: 600 sec = 10 minutes
 
-const timer = document.getElementById('timer');
+const timer       = document.getElementById('timer');
 const startButton = document.getElementById('start');
-const stopButton = document.getElementById('stop');
+const stopButton  = document.getElementById('stop');
 const resetButton = document.getElementById('reset');
 const pauseButton = document.getElementById('pause');
 
 let remainingSec; // Use to store the remaining seconds
-let interval; // Use to hold a reference to the interval
+let interval;     // Use to hold a reference to the interval
 
 // Helper function to transform this: '100' (seconds) to this '01:40'
 function toMinAndSec(sec) {
   console.log(sec);
 
-  let m = Math.floor(sec / 60);
-  let s = sec % 60;
-
-  if (m < 10) { m = '0' + m; }
-
-  if (s < 10) { s = '0' + s; }
+  let m = (Math.floor(sec / 60) + '').padStart(2, '0');
+  let s = (sec % 60 + '').padStart(2, '0');
 
   return `${m}:${s}`;
 }
@@ -36,7 +32,7 @@ function tick() {
   if (remainingSec > 0) {
     remainingSec -= 1;
   } else {
-    // TODO: Stop/Clear the interval
+    // TODO: Stop (clear) the interval
   }
   show();
 }
@@ -46,6 +42,7 @@ function tick() {
  * -------------------- */
 
 startButton.addEventListener('click', () => {
+  // TODO: If the global 'interval' variable has a value, use it ot stop (clear) the existing interval.
   // TODO: Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
 });
 
@@ -55,7 +52,7 @@ startButton.addEventListener('click', () => {
 
 stopButton.addEventListener('click', () => {
   // TODO: Reset the remaining seconds to their initial value
-  // TODO: Stop/Clear the interval
+  // TODO: Stop (clear) the interval
   // TODO: Use the appopriate (existing) function to show the remaining time on the page
 });
 
@@ -73,7 +70,7 @@ resetButton.addEventListener('click', () => {
  * -------------------- */
 
 pauseButton.addEventListener('click', () => {
-  // TODO: Clear the interval
+  // TODO: Stop (clear) the interval
 });
 
 /*
