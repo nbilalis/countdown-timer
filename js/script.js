@@ -32,7 +32,8 @@ function tick() {
   if (remainingSec > 0) {
     remainingSec -= 1;
   } else {
-    // TODO: Stop (clear) the interval
+    // * Stop (clear) the interval
+    clearInterval(interval);
   }
   show();
 }
@@ -42,8 +43,11 @@ function tick() {
  * -------------------- */
 
 startButton.addEventListener('click', () => {
-  // TODO: If the global 'interval' variable has a value, use it ot stop (clear) the existing interval.
-  // TODO: Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
+  // * If the global 'interval' variable has a value, use it ot stop (clear) the existing interval.
+  if (interval) clearInterval(interval);
+
+  // * Set an interval to 1 sec, that calls the 'tick' function. Store the interval reference to the global 'interval' variable, so that you can clear it afterwards.
+  interval = setInterval(tick, 1 * 1000);
 });
 
 /*
@@ -51,9 +55,14 @@ startButton.addEventListener('click', () => {
  * -------------------- */
 
 stopButton.addEventListener('click', () => {
-  // TODO: Reset the remaining seconds to their initial value
-  // TODO: Stop (clear) the interval
-  // TODO: Use the appopriate (existing) function to show the remaining time on the page
+  // * Reset the remaining seconds to their initial value
+  remainingSec = TOTAL_SEC;
+
+  // * Stop (clear) the interval
+  clearInterval(interval);
+
+  // * Use the appopriate (existing) function to show the remaining time on the page
+  show();
 });
 
 /*
@@ -61,8 +70,11 @@ stopButton.addEventListener('click', () => {
  * -------------------- */
 
 resetButton.addEventListener('click', () => {
-  // TODO: Reset the remaining seconds to their initial value
-  // TODO: Use the appopriate function to show the remaining time on the page
+  // * Reset the remaining seconds to their initial value
+  remainingSec = TOTAL_SEC;
+
+  // * Use the appopriate function to show the remaining time on the page
+  show();
 });
 
 /*
@@ -70,7 +82,8 @@ resetButton.addEventListener('click', () => {
  * -------------------- */
 
 pauseButton.addEventListener('click', () => {
-  // TODO: Stop (clear) the interval
+  // * Stop (clear) the interval
+  clearInterval(interval);
 });
 
 /*
