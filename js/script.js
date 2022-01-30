@@ -23,7 +23,7 @@ function toMinAndSec(sec) {
 
 // Show remaining time to the 'timer' element
 function show() {
-  timer.innerHTML = toMinAndSec(remainingSec);
+  timer.textContent = toMinAndSec(remainingSec);
 }
 
 // Decrease remaining time and show the result
